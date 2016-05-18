@@ -24,17 +24,19 @@ namespace BullsAndCows
             OpponentsMoves = new List<GameNumber>();
         }
 
-        public void TellNumber(GameNumber number, IPlayer opponent)
+        public void TellNumber(IPlayer opponent)
         {
+            var number = new GameNumber(Console.ReadLine());
             opponent.AcceptMove(number);
         }
 
         public void AcceptMove(GameNumber opponentSuggestNumber)
         {
-            Console.WriteLine(Game.GetBullAndCows(PlayerNumber, opponentSuggestNumber));
-            if (opponentSuggestNumber.Equals(PlayerNumber))
-                Console.WriteLine("Win");
             OpponentsMoves.Add(opponentSuggestNumber);
+            Console.WriteLine(Game.GetBullAndCows(PlayerNumber, opponentSuggestNumber));
+            if (!opponentSuggestNumber.Equals(PlayerNumber))
+                return;
+            OpponentNumber = opponentSuggestNumber;
         }
     }
 }

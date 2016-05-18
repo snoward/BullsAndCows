@@ -12,6 +12,7 @@ namespace BullsAndCows
         public IPlayer CurrentPlayer { get; private set; }
         public IPlayer NextPlayer { get; private set; }
         public bool IsOver => CurrentPlayer.IsWinner || NextPlayer.IsWinner;
+        public IPlayer Winner => CurrentPlayer.IsWinner ? CurrentPlayer : NextPlayer;
 
         public Game()
         {
@@ -28,8 +29,7 @@ namespace BullsAndCows
         public Game NextStep()
         {
             Console.WriteLine(CurrentPlayer.Name + "s' turn");
-            var number = new GameNumber(Console.ReadLine());
-            CurrentPlayer.TellNumber(number, NextPlayer);
+            CurrentPlayer.TellNumber(NextPlayer);
             SwapPlayerRoles();
             return this;
         }

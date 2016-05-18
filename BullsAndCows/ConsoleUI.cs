@@ -15,6 +15,7 @@ namespace BullsAndCows
             {
                 game = game.NextStep();
             }
+            Console.WriteLine(game.Winner.Name + " Wins");
         }
     }
 }

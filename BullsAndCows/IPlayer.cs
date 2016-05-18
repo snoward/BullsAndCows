@@ -13,7 +13,7 @@ namespace BullsAndCows
         GameNumber PlayerNumber { get; }
         GameNumber OpponentNumber { get; }
 
-        void TellNumber(GameNumber number, IPlayer nextPlayer);
+        void TellNumber(IPlayer nextPlayer);
         void AcceptMove(GameNumber number);
     }
 }
