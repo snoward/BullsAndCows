@@ -10,10 +10,9 @@ namespace BullsAndCows
     {
         bool IsWinner { get; }
         string Name { get; }
+        List<GameNumber> Moves { get; }
         GameNumber PlayerNumber { get; }
-        GameNumber OpponentNumber { get; }
-
-        void TellNumber(IPlayer nextPlayer);
-        void AcceptMove(GameNumber number);
+        GameNumber TellNumber(IPlayer nextPlayer);
+        bool AcceptMove(GameNumber number);
     }
 }

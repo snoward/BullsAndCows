@@ -54,5 +54,24 @@ namespace BullsAndCows
         {
             return Number.GetHashCode();
         }
+
+        public static string GetBullAndCows(GameNumber real, GameNumber suggest)
+        {
+            var bulls = 0;
+            var cows = 0;
+            foreach (var digit in suggest.Number)
+            {
+                if (!real.Number.Contains(digit))
+                    continue;
+                var realPosition = real.Number.IndexOf(digit);
+                var suggestPosition = suggest.Number.IndexOf(digit);
+                if (realPosition == suggestPosition)
+                    bulls++;
+                else
+                    cows++;
+            }
+            
+            return string.Format($"({bulls}б {cows}к)");
+        }
     }
 }

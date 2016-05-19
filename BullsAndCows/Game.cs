@@ -28,7 +28,7 @@ namespace BullsAndCows
 
         public Game NextStep()
         {
-            Console.WriteLine(CurrentPlayer.Name + "s' turn");
+            //Console.WriteLine(CurrentPlayer.Name + "s' turn");
             CurrentPlayer.TellNumber(NextPlayer);
             SwapPlayerRoles();
             return this;
@@ -41,22 +41,18 @@ namespace BullsAndCows
             NextPlayer = tmp;
         }
 
-        public static Tuple<int, int> GetBullAndCows(GameNumber real, GameNumber suggest)
+        public void PrintGame()
         {
-            var bulls = 0;
-            var cows = 0;
-            foreach (var digit in suggest.Number)
+            Console.Clear();
+            Console.WriteLine($"{CurrentPlayer.Name}\t\t\t\t{NextPlayer.Name}");
+            for (var i = 0; i < CurrentPlayer.Moves.Count; i++)
             {
-                if (!real.Number.Contains(digit))
-                    continue;
-                var realPosition = real.Number.IndexOf(digit);
-                var suggestPosition = suggest.Number.IndexOf(digit);
-                if (realPosition == suggestPosition)
-                    bulls++;
-                else
-                    cows++;
+                var currentPlayerNumber = CurrentPlayer.Moves[i];
+                var nextPlayerNumber = NextPlayer.Moves[i];
+                var currentPlayerAnswer = GameNumber.GetBullAndCows(NextPlayer.PlayerNumber, currentPlayerNumber);
+                var nextPlayerAnswer = GameNumber.GetBullAndCows(CurrentPlayer.PlayerNumber, nextPlayerNumber);
+                Console.WriteLine($"{currentPlayerNumber} {currentPlayerAnswer}\t\t\t{nextPlayerNumber} {nextPlayerAnswer}");
             }
-            return Tuple.Create(bulls, cows);
         }
     }
 }
