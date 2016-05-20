@@ -15,7 +15,7 @@ namespace BullsAndCows
         {
             if (number.Length != Game.NumberLength)
                 throw new ArgumentException("Number length must be " + Game.NumberLength);
-            if (number.Where(char.IsDigit).ToArray().Length != Game.NumberLength)
+            if (!number.All(char.IsDigit))
                 throw new ArgumentException("Incorrect number format. Use only digits.");
             if (number.ToCharArray().Distinct().Count() != Game.NumberLength)
                 throw new ArgumentException("Every digit must be unique");
