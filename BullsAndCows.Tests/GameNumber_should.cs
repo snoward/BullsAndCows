@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using FluentAssertions;
+using FakeItEasy;
 
 namespace BullsAndCows.Tests
 {

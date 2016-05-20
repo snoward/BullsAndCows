@@ -21,14 +21,13 @@ namespace BullsAndCows
             Moves = new List<GameNumber>();
         }
 
-        public GameNumber TellNumber(IPlayer opponent)
+        public void TellNumber(IPlayer opponent)
         {
             var number = GameNumber.GenerateRandomNumber();
             Moves.Add(number);
             //Console.WriteLine("I think it is " + number.Number);
             var isNumberFound = opponent.AcceptMove(number);
             IsWinner = isNumberFound;
-            return number;
         }
 
         public bool AcceptMove(GameNumber opponentSuggestNumber)

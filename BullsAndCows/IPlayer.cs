@@ -12,7 +12,7 @@ namespace BullsAndCows
         string Name { get; }
         List<GameNumber> Moves { get; }
         GameNumber PlayerNumber { get; }
-        GameNumber TellNumber(IPlayer nextPlayer);
+        void TellNumber(IPlayer nextPlayer);
         bool AcceptMove(GameNumber number);
     }
 }
