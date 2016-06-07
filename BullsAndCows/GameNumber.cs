@@ -42,13 +42,17 @@ namespace BullsAndCows
             return Number;
         }
 
+        public bool Equals(GameNumber number)
+        {
+            return Number == number.Number;
+        }
+
         public override bool Equals(object obj)
         {
-            if (!(obj is GameNumber))
-                return false;
-            var number = (GameNumber) obj;
-            return string.Equals(number.Number, Number);
-        }
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return obj.GetType() == GetType() && Equals((GameNumber)obj);
+        }   
 
         public override int GetHashCode()
         {

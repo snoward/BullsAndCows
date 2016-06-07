@@ -5,20 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BullsAndCows
-{
+{/*
     class EasyAI : IPlayer  
     {
         public string Name { get; }
         public GameNumber PlayerNumber { get; }
-        public bool IsWinner { get; private set; }
-        public List<GameNumber> Moves { get; private set; }
 
         public EasyAI()
         {
             Name = "EasyAI";
             PlayerNumber = GameNumber.GenerateRandomNumber();
             Console.WriteLine("TSss.... My number is " + PlayerNumber);
-            Moves = new List<GameNumber>();
         }
 
         public void TellNumber(IPlayer opponent)
@@ -36,4 +33,4 @@ namespace BullsAndCows
             return opponentSuggestNumber.Equals(PlayerNumber);
         }
     }
-}
+*/}

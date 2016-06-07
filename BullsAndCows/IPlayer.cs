@@ -8,11 +8,9 @@ namespace BullsAndCows
 {
     public interface IPlayer
     {
-        bool IsWinner { get; }
         string Name { get; }
-        List<GameNumber> Moves { get; }
         GameNumber PlayerNumber { get; }
-        void TellNumber(IPlayer nextPlayer);
-        bool AcceptMove(GameNumber number);
+        bool IsWinner { get; }
+        void AcceptMove(GameNumber number);
     }
 }

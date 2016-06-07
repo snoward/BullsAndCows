@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,22 +15,15 @@ namespace BullsAndCows
         public bool IsOver => CurrentPlayer.IsWinner || NextPlayer.IsWinner;
         public IPlayer Winner => CurrentPlayer.IsWinner ? CurrentPlayer : NextPlayer;
 
-        public Game()
+        public Game(IPlayer one, IPlayer another)
         {
-            CurrentPlayer = new Player();
-            NextPlayer = new Player();
+            CurrentPlayer = one;
+            NextPlayer = another;
         }
 
-        public Game(IPlayer opponent)
+        public Game NextStep(GameNumber currentNumber)
         {
-            CurrentPlayer = new Player();
-            NextPlayer = opponent;
-        }
-
-        public Game NextStep()
-        {
-            //Console.WriteLine(CurrentPlayer.Name + "s' turn");
-            CurrentPlayer.TellNumber(NextPlayer);
+            NextPlayer.AcceptMove(currentNumber);
             SwapPlayerRoles();
             return this;
         }
@@ -41,18 +35,11 @@ namespace BullsAndCows
             NextPlayer = tmp;
         }
 
-        public void PrintGame()
+        public string CheckNumber(GameNumber currentNumber)
         {
-            Console.Clear();
-            Console.WriteLine($"{CurrentPlayer.Name}\t\t\t\t{NextPlayer.Name}");
-            for (var i = 0; i < CurrentPlayer.Moves.Count; i++)
-            {
-                var currentPlayerNumber = CurrentPlayer.Moves[i];
-                var nextPlayerNumber = NextPlayer.Moves[i];
-                var currentPlayerAnswer = GameNumber.GetBullAndCows(NextPlayer.PlayerNumber, currentPlayerNumber);
-                var nextPlayerAnswer = GameNumber.GetBullAndCows(CurrentPlayer.PlayerNumber, nextPlayerNumber);
-                Console.WriteLine($"{currentPlayerNumber} {currentPlayerAnswer}\t\t\t{nextPlayerNumber} {nextPlayerAnswer}");
-            }
+            NextPlayer.AcceptMove(currentNumber);
+            var bullsAndCows = GameNumber.GetBullAndCows(currentNumber, NextPlayer.PlayerNumber);
+            return bullsAndCows;
         }
     }
 }

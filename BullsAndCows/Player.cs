@@ -9,33 +9,19 @@ namespace BullsAndCows
 {
     public class Player : IPlayer
     {
-        public string Name { get; private set; }
-        public bool IsWinner { get; private set; }
+        public string Name { get; }
         public GameNumber PlayerNumber { get; }
+        public bool IsWinner { get; private set; }
 
-        public List<GameNumber> Moves { get; private set; }
-
-        public Player()
+        public Player(string name, GameNumber number)
         {
-            Console.WriteLine("Enter the player name");
-            Name = Console.ReadLine();
-            Console.WriteLine("Enter your game number");
-            PlayerNumber = new GameNumber(Console.ReadLine());
-            Moves = new List<GameNumber>();
+            Name = name;
+            PlayerNumber = number;
         }
 
-        public void TellNumber(IPlayer opponent)
+        public void AcceptMove(GameNumber number)
         {
-            var number = new GameNumber(Console.ReadLine());
-            Moves.Add(number);
-            var isNumberFound = opponent.AcceptMove(number);
-            IsWinner = isNumberFound;
-        }
-
-        public bool AcceptMove(GameNumber opponentSuggestNumber)
-        {
-            //Console.WriteLine(Game.GetBullAndCows(PlayerNumber, opponentSuggestNumber));
-            return opponentSuggestNumber.Equals(PlayerNumber);
+            IsWinner = number.Equals(PlayerNumber);
         }
     }
 }
