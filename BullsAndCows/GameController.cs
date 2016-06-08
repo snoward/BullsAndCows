@@ -12,10 +12,9 @@ namespace BullsAndCows
     {
         public IGameUi Ui { get; private set; }
 
-        public GameController()
+        public GameController(IGameUi ui)
         {
-            Ui = new ConsoleUi();
-            
+            Ui = ui;
         }
 
         public IPlayer CreatePlayer() 
@@ -33,18 +32,15 @@ namespace BullsAndCows
             return new Game(one, another);
         }
 
+
         public void Run()
         {
             var game = CreateGame();
-            //Ui = new ConsoleUi(game);
             while (!game.IsOver)
             {
                 Ui.UpdateView(game);
                 var currentNumber = new GameNumber(Ui.GetNumber());
-                var bullsCows = game.CheckNumber(currentNumber); 
-                Ui.PrintBullsCows(bullsCows);
-
-                game.NextStep(currentNumber);
+                game = game.NextStep(currentNumber);
             }
             Ui.PrintWinner(game.Winner.Name);
         }

@@ -8,11 +8,10 @@ namespace BullsAndCows
 {
     public interface IGameUi
     {
-        string GetPlayerName();
-        string GetPlayerNumber();
-        string GetNumber();
-        void PrintBullsCows(string bullsCows);
-        void PrintWinner(string winner);
+        string SnowGetPlayerNameDialog();
+        string SnowGetPlayerNumber();
+        string SnowGetNumber();
+        void SnowWinnerName(string winner);
         void UpdateView(Game game);
     }
 }

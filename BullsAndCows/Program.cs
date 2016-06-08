@@ -10,8 +10,8 @@ namespace BullsAndCows
     {
         public static void Main(string[] args)
         {
-            var GC = new GameController();
-            GC.Run();
+            var controller = new GameController(new ConsoleUi());
+            controller.Run();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace GameForm
 {
-    partial class BullsAndCows
+    partial class WindowsUi
     {
         /// <summary>
         /// Обязательная переменная конструктора.

@@ -21,7 +21,7 @@ namespace BullsAndCows
 
         public void AcceptMove(GameNumber number)
         {
-            IsWinner = number.Equals(PlayerNumber);
+            IsWinner = !number.Equals(PlayerNumber);
         }
     }
 }

@@ -14,16 +14,24 @@ namespace BullsAndCows
         public IPlayer NextPlayer { get; private set; }
         public bool IsOver => CurrentPlayer.IsWinner || NextPlayer.IsWinner;
         public IPlayer Winner => CurrentPlayer.IsWinner ? CurrentPlayer : NextPlayer;
+        public Dictionary<IPlayer, List<GameNumber>> Moves { get; private set; }
+
 
         public Game(IPlayer one, IPlayer another)
         {
             CurrentPlayer = one;
             NextPlayer = another;
+            Moves = new Dictionary<IPlayer, List<GameNumber>>
+            {
+                [CurrentPlayer] = new List<GameNumber>(),
+                [NextPlayer] = new List<GameNumber>()
+            };
         }
 
-        public Game NextStep(GameNumber currentNumber)
+        public Game NextStep(GameNumber nextNumber)
         {
-            NextPlayer.AcceptMove(currentNumber);
+            NextPlayer.AcceptMove(nextNumber);
+            Moves[CurrentPlayer].Add(nextNumber);
             SwapPlayerRoles();
             return this;
         }
