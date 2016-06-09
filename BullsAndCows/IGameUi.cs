@@ -9,8 +9,8 @@ namespace BullsAndCows
     public interface IGameUi
     {
         string SnowGetPlayerNameDialog();
-        string SnowGetPlayerNumber();
-        string SnowGetNumber();
+        string SnowGetPlayerNumberDialog();
+        string SnowGetNumberDialog();
         void SnowWinnerName(string winner);
         void UpdateView(Game game);
     }

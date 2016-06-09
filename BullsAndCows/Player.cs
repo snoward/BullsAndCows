@@ -11,7 +11,7 @@ namespace BullsAndCows
     {
         public string Name { get; }
         public GameNumber PlayerNumber { get; }
-        public bool IsWinner { get; private set; }
+        public bool IsLoser { get; private set; }
 
         public Player(string name, GameNumber number)
         {
@@ -21,7 +21,7 @@ namespace BullsAndCows
 
         public void AcceptMove(GameNumber number)
         {
-            IsWinner = !number.Equals(PlayerNumber);
+            IsLoser = number.Equals(PlayerNumber);
         }
     }
 }

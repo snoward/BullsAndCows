@@ -12,8 +12,8 @@ namespace BullsAndCows
         public const int NumberLength = 4;
         public IPlayer CurrentPlayer { get; private set; }
         public IPlayer NextPlayer { get; private set; }
-        public bool IsOver => CurrentPlayer.IsWinner || NextPlayer.IsWinner;
-        public IPlayer Winner => CurrentPlayer.IsWinner ? CurrentPlayer : NextPlayer;
+        public bool IsOver => CurrentPlayer.IsLoser || NextPlayer.IsLoser;
+        public IPlayer Winner => CurrentPlayer.IsLoser ? NextPlayer : CurrentPlayer;
         public Dictionary<IPlayer, List<GameNumber>> Moves { get; private set; }
 
 

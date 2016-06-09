@@ -10,7 +10,7 @@ namespace BullsAndCows
     {
         string Name { get; }
         GameNumber PlayerNumber { get; }
-        bool IsWinner { get; }
+        bool IsLoser { get; }
         void AcceptMove(GameNumber number);
     }
 }

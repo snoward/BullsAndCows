@@ -10,7 +10,7 @@ namespace BullsAndCows
     {
         public static void Main(string[] args)
         {
-            var controller = new GameController(new ConsoleUi());
+            var controller = new NetworkController();
             controller.Run();
         }
     }

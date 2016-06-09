@@ -15,30 +15,31 @@ namespace BullsAndCows
     {
         public WindowUi()
         {
+
         }
 
-        public string GetPlayerName()
+        public string SnowGetPlayerNameDialog()
         {
             MessageBox.Show(@"Введите имя игрока");
             return "Misha";
         }
 
-        public string GetPlayerNumber()
+        public string SnowGetPlayerNumberDialog()
         {
             throw new NotImplementedException();
         }
 
-        public string GetNumber()
+        public string SnowGetNumberDialog()
         {
             throw new NotImplementedException();
         }
 
-        public void PrintBullsCows(string bullsCows)
+        public void SnowStepResult(string bullsCows)
         {
             throw new NotImplementedException();
         }
 
-        public void PrintWinner(string winner)
+        public void SnowWinnerName(string winner)
         {
             throw new NotImplementedException();
         }

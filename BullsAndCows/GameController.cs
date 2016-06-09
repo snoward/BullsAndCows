@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace BullsAndCows
 {
-
     public class GameController
     {
         public IGameUi Ui { get; private set; }
@@ -19,8 +18,8 @@ namespace BullsAndCows
 
         public IPlayer CreatePlayer() 
         {
-            var name = Ui.GetPlayerName();
-            var number = new GameNumber(Ui.GetPlayerNumber());
+            var name = Ui.SnowGetPlayerNameDialog();
+            var number = new GameNumber(Ui.SnowGetPlayerNumberDialog());
             return new Player(name, number);
         }
 
@@ -39,10 +38,10 @@ namespace BullsAndCows
             while (!game.IsOver)
             {
                 Ui.UpdateView(game);
-                var currentNumber = new GameNumber(Ui.GetNumber());
+                var currentNumber = new GameNumber(Ui.SnowGetNumberDialog());
                 game = game.NextStep(currentNumber);
             }
-            Ui.PrintWinner(game.Winner.Name);
+            Ui.SnowWinnerName(game.Winner.Name);
         }
     }
 }
